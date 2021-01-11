@@ -1,13 +1,21 @@
+// config/webpack/rules/vue.js
+
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
+// Ref: https://github.com/rails/webpacker#other-frameworks
 module.exports = {
   module: {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader'
+        use: { loader: 'vue-loader' }
       }
     ]
   },
-  plugins: [new VueLoaderPlugin()]
+  plugins: [new VueLoaderPlugin()],
+  resolve: {
+    alias: {
+      vue: 'vue/dist/vue.js',
+    },
+  },
 }
